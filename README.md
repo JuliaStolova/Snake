@@ -13,4 +13,4 @@ Mechanics:
 * An apple gives you +1 length
 * A spike deals 1 damage, causing you to lose 1 length
 * A super fruit gives you +3 length
-* The walls and the snake itself are obstacles — they kill you instantly upon collision
+* The walls and the snake itself are obstacles - they kill you instantly upon collision
