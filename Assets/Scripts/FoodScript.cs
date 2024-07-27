@@ -34,6 +34,10 @@ public class FoodScript : MonoBehaviour
                 SuperFruitSpawn();
             }
         }
+        else if (collision.tag == "Obstacle" || collision.tag == "SuperFruit")
+        {
+            RandomizePosition();
+        }
     }
 
     private void SuperFruitSpawn()

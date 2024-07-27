@@ -9,10 +9,8 @@ public class SnakeScript : MonoBehaviour
     private List<Transform> lSegments;
     public Transform segmentPrefab;
     public int instantiateSize = 4;
-    [HideInInspector]
-    public int foodScore = 0;
-    [HideInInspector]
-    public int deathCounter = 0;
+    private int foodScore = 0;
+    private int deathCounter = 0;
     public Text fruitsEatenScore;
     public Text diedScore;
     public Text gameOver;
@@ -20,6 +18,7 @@ public class SnakeScript : MonoBehaviour
 
     private void Start()
     {
+        // creating a list and a snake itself
         lSegments = new List<Transform>();
         lSegments.Add(this.transform);
 
@@ -51,6 +50,7 @@ public class SnakeScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Snake movement
         for (int i = lSegments.Count - 1; i > 0; i--)
         {
             lSegments[i].position = lSegments[i - 1].position;
@@ -61,6 +61,7 @@ public class SnakeScript : MonoBehaviour
             Mathf.Round(this.transform.position.y) + direction.y,
             0f);
 
+        //text score
         fruitsEatenScore.text = $"Fruits eaten: {foodScore}";
         diedScore.text = $"Died times: {deathCounter}";
     }
@@ -107,23 +108,29 @@ public class SnakeScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Food")
-        {
-            Grow();
-        } else if (collision.tag == "Obstacle")
-        {
-            ResetState();
-        } else if (collision.tag == "Spike")
-        {
-            Damage();
-        } else if (collision.tag == "SuperFruit")
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                Grow();
-            }
 
-            collision.gameObject.SetActive(false);
+        switch (collision.tag)
+        {
+            case "Food":
+                Grow();
+                break;
+
+            case "Obstacle":
+                ResetState();
+                break;
+
+            case "Spike":
+                Damage();
+                break;
+
+            case "SuperFruit":
+                for (int i = 0; i < 3; i++)
+                {
+                    Grow();
+                }
+                collision.gameObject.SetActive(false);
+                break;
         }
+
     }
 }
