@@ -1,12 +1,15 @@
 ### How to play
 * Windows
-1. Download the folder "Snake-Windows"
-2. Run Snake.exe
-3. To close game press Alt+F4
+1. Download a zip archive "Snake-Windows.zip"
+2. Unzip the zip archive
+3. Run Snake.exe
+4. To close game press Alt+F4
 * Mac
-1. Download .app file "Snake-Mac"
-2. Run Snake.app
-3. To close game press cmd+Q
+1. Download a zip archive "Snake-Mac.zip"
+2. Unzip the zip archive
+3. Open a terminal, write a command `sudo xattr -rd com.apple.quarantine ./Snake-mac.app`
+4. Run Snake-mac.app
+5. To close game press cmd+Q
 
 ---
 ### Game settings
